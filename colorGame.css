@@ -13,9 +13,19 @@ body{
     padding-bottom: 30%;
     float: left;
 }
-span{
+/*span{
     color: white;
-}
+}*/
+
 h1{
     color: white;
+}
+#bar{
+    background-color: white;
+    height: 30px;
+    text-align: center;
+    color: black;
+}
+.selected{
+    background-color: blue;
 }
