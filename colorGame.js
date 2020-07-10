@@ -1,16 +1,16 @@
 var numSquare = 6;
 var colors = generateRandomColor(numSquare);
+var clickedColor;
 
 var squares = document.querySelectorAll(".square");
 var colorDisp = document.getElementById("colorDisp");
-var pickedColor = pickColor();
-
-var clickedColor;
 var messageDisp = document.getElementById("message");
 var h1 = document.querySelector("h1") ;
 var resetButton = document.querySelector("#reset");
 var easyBtn = document.querySelector("#easyBtn");
 var hardBtn = document.querySelector("#hardBtn");
+
+var pickedColor = pickColor();
 colorDisp.textContent =  pickedColor; //change the color in header
 
 easyBtn.addEventListener("click",function(){
@@ -29,6 +29,7 @@ easyBtn.addEventListener("click",function(){
         }
     } 
 });
+
 hardBtn.addEventListener("click",function(){
     hardBtn.classList.add("selected");
     easyBtn.classList.remove("selected");
@@ -43,7 +44,7 @@ hardBtn.addEventListener("click",function(){
             squares[i].style.display = "block";
         } 
     } 
-})
+});
 
 resetButton.addEventListener("click", function(){
     //generate all colors
@@ -53,23 +54,26 @@ resetButton.addEventListener("click", function(){
     //change color in header
     colorDisp.textContent =  pickedColor; 
     //change color of squares
-    for( var i=0; i<squares.length ; i++){
+    for( var i=0; i<squares.length ; i++)
+    {
         squares[i].style.backgroundColor = colors[i];
     }    
     h1.style.background = "steelblue";
-
+    messageDisp.textContent = "";
+    resetButton.textContent = "New Colors";
 });
 
-for( var i=0; i<squares.length ; i++){
+for( var i=0; i<squares.length ; i++)
+{
     squares[i].style.backgroundColor = colors[i];
-    
     squares[i].addEventListener("click", function(){
     //grab color of picked square
         clickedColor = this.style.backgroundColor;
         console.log(clickedColor);
 
     //compare clicked color with picked color
-        if(clickedColor === pickedColor){
+        if(clickedColor === pickedColor)
+        {
             messageDisp.textContent = "Correct"
             changeColor(clickedColor);
             h1.style.backgroundColor = clickedColor;
